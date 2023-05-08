@@ -2,7 +2,6 @@
  * Apache 2.0 License
  *
  * Copyright (c) Sebastian Katzer 2017
- * Contributor Bhumin Bhandari
  *
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apache License
@@ -65,8 +64,7 @@ static char optionsKey;
     self.sound              = options.sound;
     self.badge              = options.badge;
     self.attachments        = options.attachments;
-    self.categoryIdentifier = options.actionGroupId;
-    self.threadIdentifier   = options.group;
+    self.categoryIdentifier = options.categoryId;
 }
 
 #pragma mark -
@@ -104,6 +102,25 @@ static char optionsKey;
     return [UNNotificationRequest requestWithIdentifier:opts.identifier
                                                 content:self
                                                 trigger:opts.trigger];
+}
+
+/**
+ * The category for the notification with all the actions.
+ *
+ * @return [ UNNotificationCategory* ]
+ */
+- (UNNotificationCategory*) category
+{
+    NSString* categoryId = self.categoryIdentifier;
+    NSArray* actions     = self.options.actions;
+
+    if (!actions.count)
+        return NULL;
+
+    return [UNNotificationCategory categoryWithIdentifier:categoryId
+                                                  actions:actions
+                                        intentIdentifiers:@[]
+                                                  options:UNNotificationCategoryOptionCustomDismissAction];
 }
 
 #pragma mark -

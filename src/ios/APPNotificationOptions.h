@@ -2,7 +2,6 @@
  * Apache 2.0 License
  *
  * Copyright (c) Sebastian Katzer 2017
- * Contributor Bhumin Bhandari
  *
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apache License
@@ -24,21 +23,21 @@
 
 @interface APPNotificationOptions : NSObject
 
-@property (readonly, getter=id)            NSNumber*            id;
-@property (readonly, getter=identifier)    NSString*            identifier;
-@property (readonly, getter=actionGroupId) NSString*            actionGroupId;
-@property (readonly, getter=group)         NSString*            group;
-@property (readonly, getter=title)         NSString*            title;
-@property (readonly, getter=subtitle)      NSString*            subtitle;
-@property (readonly, getter=badge)         NSNumber*            badge;
-@property (readonly, getter=text)          NSString*            text;
-@property (readonly, getter=silent)        BOOL                 silent;
-@property (readonly, getter=priority)      int                  priority;
-@property (readonly, getter=sound)         UNNotificationSound* sound;
-@property (readonly, getter=userInfo)      NSDictionary*        userInfo;
-@property (readonly, getter=attachments)   NSArray<UNNotificationAttachment*>*attachments;
+@property (readonly, getter=id)          NSNumber*            id;
+@property (readonly, getter=identifier)  NSString*            identifier;
+@property (readonly, getter=categoryId)  NSString*            categoryId;
+@property (readonly, getter=title)       NSString*            title;
+@property (readonly, getter=subtitle)    NSString*            subtitle;
+@property (readonly, getter=badge)       NSNumber*            badge;
+@property (readonly, getter=text)        NSString*            text;
+@property (readonly, getter=silent)      BOOL                 silent;
+@property (readonly, getter=priority)    int                  priority;
+@property (readonly, getter=sound)       UNNotificationSound* sound;
+@property (readonly, getter=userInfo)    NSDictionary*        userInfo;
+@property (readonly, getter=actions)     NSArray<UNNotificationAction *> * actions;
+@property (readonly, getter=attachments) NSArray<UNNotificationAttachment *> * attachments;
 
-- (id) initWithDict:(NSDictionary*) dict;
+- (id) initWithDict:(NSDictionary*)dict;
 - (UNNotificationTrigger*) trigger;
 
 @end
